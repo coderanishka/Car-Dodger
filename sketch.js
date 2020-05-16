@@ -4,8 +4,7 @@ var life = 5;
 var gameState = "play";
 
 function preload(){
-  roadImg = loadImage("assets/road.png")
-  
+  roadImg = loadImage("assets/road.png","assets/road2.png")
   playerImg = loadImage("assets/player.png");
   img1 = loadImage("assets/car1.png");
   img2 = loadImage("assets/car2.png");
@@ -31,6 +30,11 @@ function preload(){
 function setup() { 
   createCanvas(1400,900); 
 
+  bg = createSprite(width/2,height/2);
+  bg.addImage(roadImg);
+  bg.x = 1000
+  bg.scale = 1.5
+
   player = createSprite(400,350,30,50);
   player.addImage(playerImg);
   player.setCollider("circle",25,15,50);
@@ -39,12 +43,12 @@ function setup() {
   scoreBoard = createSprite(100,50,450,100);
   scoreBoard.shapeColor = "black";
 
-  wall1 = createSprite(700,150,1400,20);
+  wall1 = createSprite(700,0,1400,20);
   wall1.shapeColor = "purple";
   wall1.visible = false;
-  wall2 = createSprite(700,750,1400,20);
+  wall2 = createSprite(700,900,1400,20);
   wall2.shapeColor = "purple";
-  wall1.visible = false;
+  wall2.visible = false;
 
   replay = createButton("Replay");
   replay.position(200,10);
@@ -60,8 +64,13 @@ function setup() {
 }
      
 function draw() {
- background(roadImg); 
+ background(0); 
  createEdgeSprites();
+  
+ bg.velocityX =-4;
+ if (bg.x < 150){
+   bg.x = 1000 
+ }
 
  VehicleGroup.collide(wall1);
  VehicleGroup.collide(wall2);
