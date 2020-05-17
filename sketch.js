@@ -4,7 +4,7 @@ var life = 5;
 var gameState = "play";
 
 function preload(){
-  roadImg = loadImage("assets/road.png","assets/road2.png")
+  roadImg = loadImage("road.png");
   playerImg = loadImage("assets/player.png");
   img1 = loadImage("assets/car1.png");
   img2 = loadImage("assets/car2.png");
