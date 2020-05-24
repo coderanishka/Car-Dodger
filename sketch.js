@@ -76,7 +76,7 @@ function draw() {
     }
     if(VehicleGroup.isTouching(player)){
       life--; player.x = 1500; 
-      // gameState = "play"; 
+       gameState = "play"; 
     } 
     drawSprites();
     spawnVehicles();
